@@ -1,0 +1,7 @@
+{
+    "watch": ["src"],
+    "ignore": ["node_modules", "dist", "build"],
+    "ext": "js,json",
+    "exec": "node src/server/main.js"
+  }
+  
