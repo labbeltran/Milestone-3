@@ -3,6 +3,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import dotenv from "dotenv";
 import mongoose from 'mongoose'
+import apisRouter from './controllers/api'
 
 // CONFIGURATION
 dotenv.config();
@@ -16,9 +17,7 @@ console.log('connected to mongo: ', process.env.MONGO_URI)
 app.use(express.json());
 
 // ROUTES
-// app.get('/', (req, res) => {
-//     res.send('Hello, world!');
-//   });
+app.use('/api', apisRouter)
 
 //Listen
 ViteExpress.listen(app, PORT, () =>
