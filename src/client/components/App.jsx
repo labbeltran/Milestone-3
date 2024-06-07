@@ -34,3 +34,12 @@ function App() {
 
 export default App
 
+export const updateCard = async (req, res) =>{
+  const {id} = req.params 
+  if(!mongoose.Types.ObjectID.isValid(id)){
+    return res.status(404).json({error: 'no card found'})
+  }
+  const card= await Card.findONeAndUpdate([_id: id], {
+    ...req.body,
+  })
+}
