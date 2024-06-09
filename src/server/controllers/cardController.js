@@ -1,30 +1,11 @@
 import axios from 'axios';
 import * as yup from 'yup';
-
+import { pokeCard } from '../models/pokeCard.js';
 
 const API_KEY = process.env.API_KEY
 const apiUrl = 'https://api.pokemontcg.io/v2/cards'
 
-const pokeCardSchema = yup.object().shape({
-    name: yup.string().required(),
-    set: yup.object().shape({
-      id: yup.string().required(),
-      name: yup.string().required(),
-    }),
-    rarity: yup.string().required(),
-    flavorText: yup.string().required(),
-    images: yup.object().shape({
-      small: yup.string().required(),
-      large: yup.string().required(),
-    }),
-    tcgplayer: yup.object().shape({
-      prices: yup.object().required(),
-    }),
-    cardmarket: yup.object().shape({
-      prices: yup.object().required(),
-    }),
-})
-
+// wait for data axios.get
 const fetchWithRetry = async (url, options, retries = 5) => {
     for (let i = 0; i < retries; i++) {
       try {
@@ -42,6 +23,7 @@ const fetchWithRetry = async (url, options, retries = 5) => {
     throw new Error('Max retries reached');
 };
 
+// get all pokemon cards
 const fetchPokemonCards = async () => {
   try {
     const response = await fetchWithRetry(apiUrl, {
@@ -62,7 +44,7 @@ const fetchPokemonCards = async () => {
             const data = cardResponse.data.data; // Adjust according to actual API response structure
         
             // Validate the response data against the schema
-            await pokeCardSchema.validate(data);
+            await pokeCard.validate(data);
         
             console.log('Fetched and validated card:', data);
           } catch (error) {

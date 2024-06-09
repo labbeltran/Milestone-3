@@ -23,35 +23,6 @@ const pokeCardSchema = yup.object().shape({
 })
 
 
-export default pokeCardSchema
-
-// const fetchPokemonCard = async (cardId) => {
-//   try {
-//     const response = await axios.get(`${apiUrl}/${cardId}`);
-//     const data = response.data.data; // Adjust according to actual API response structure
-
-//     // Validate the response data against the schema
-//     await pokeCardSchema.validate(data);
-
-//     console.log('Fetched and validated card:', data);
-//     return data;
-//   } catch (error) {
-//     if (error instanceof yup.ValidationError) {
-//       console.error('Validation error:', error.errors);
-//     } else {
-//       console.error('API error:', error.message);
-//     }
-//     return null;
-//   }
-// };
-
-// fetchPokemonCard('xy7-54')
-//   .then(card => {
-//     if (card) {
-//       console.log('Fetched and validated card:', card);
-//     } else {
-//       console.log('Failed to fetch or validate card');
-//     }
-//   });
+export const pokeCard = pokeCardSchema
 
 
