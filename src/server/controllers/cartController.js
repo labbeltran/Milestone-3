@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import PokeCard from '../models/pokeCard';
 
 
 //get all cards
