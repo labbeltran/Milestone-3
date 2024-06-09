@@ -13,11 +13,17 @@
   "dependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.1",
+<<<<<<< HEAD
     "firebase": "^10.12.2",
+=======
+    "axios": "^1.7.2",
+    "mongoose": "^8.4.1",
+>>>>>>> 8a489232517b594c62f8c95151c6ae3d5eab21c3
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

@@ -6,13 +6,13 @@ import SearchBar from './components/SearchBar'
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
   let [data, setData] = useState([])
-  let [message, setMessage] = useState('Search for Music!')
+  let [message, setMessage] = useState('Whos that Pokemon!')
 
   useEffect(() => {
     if (searchTerm) {
       document.title=`${searchTerm} Pokemon`
       const fetchData = async () => {
-        const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+        const response = await fetch(`https://api.pokemontcg.io/v2/cardssearch?term=${searchTerm}`)
         const resData = await response.json()
         if(resData.results.length > 0) {
           setData(resData.results)
