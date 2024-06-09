@@ -1,36 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import CardsGallery from './components/CardsGallery';
+import Cards from './components/Cards';
+import SearchBar from './components/SearchBar'
 
 function App() {
-  const [count, setCount] = useState(0)
+  let [searchTerm, setSearchTerm] = useState('')
+  let [data, setData] = useState([])
+  let [message, setMessage] = useState('Search for Music!')
+
+  useEffect(() => {
+    if (searchTerm) {
+      document.title=`${searchTerm} Pokemon`
+      const fetchData = async () => {
+        const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+        const resData = await response.json()
+        if(resData.results.length > 0) {
+          setData(resData.results)
+        } else {
+          setMessage('Not Found')
+        }
+      }
+      fetchData()
+  }
+  }, [searchTerm])
+
+  const handleSearch = (e, term) => {
+    e.preventDefault()
+    setSearchTerm(term)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <SearchBar handleSearch={handleSearch} />
+      {message}
+      <CardsGallery data={data} />
+    </div>
+  );
 }
 
-export default App
-
+export default App;
