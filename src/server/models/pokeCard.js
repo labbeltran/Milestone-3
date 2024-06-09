@@ -8,17 +8,19 @@ const pokeCardSchema = yup.object().shape({
     id: yup.string().required(),
     name: yup.string().required(),
   }),
-  rarity: yup.string().required(),
-  flavorText: yup.string().required(),
+  rarity: yup.string(),
+  flavorText: yup.string(),
   images: yup.object().shape({
     small: yup.string().required(),
     large: yup.string().required(),
   }),
   tcgplayer: yup.object().shape({
-    prices: yup.object().required(),
+    prices: yup.object(),
     }),
   cardmarket: yup.object().shape({
-    prices: yup.object().required(),
+    prices: yup.object().shape({
+      averageSellPrice: yup.number().required()
+    }),
     }),
 })
 

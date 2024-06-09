@@ -44,9 +44,9 @@ const fetchPokemonCards = async () => {
             const data = cardResponse.data.data; // Adjust according to actual API response structure
         
             // Validate the response data against the schema
-            await pokeCard.validate(data);
+            const pokeCardValue = await pokeCard.validate(data, {stripUnknown: true});
         
-            console.log('Fetched and validated card:', data);
+            console.log('Fetched and validated card:', pokeCardValue);
           } catch (error) {
             if (error instanceof yup.ValidationError) {
               console.error('Validation error:', error.errors);
