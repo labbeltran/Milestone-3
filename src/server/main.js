@@ -3,7 +3,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import dotenv from "dotenv";
 import mongoose from 'mongoose'
-import apisRouter from './controllers/api'
+import apisRouter from './controllers/api.js'
 
 // CONFIGURATION
 dotenv.config();

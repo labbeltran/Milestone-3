@@ -1,7 +1,6 @@
-import axios from 'axios';
-import yup from 'yup';
 
-const apiUrl = 'https://api.pokemontcg.io/v2/cards'
+import * as yup from 'yup';
+
 // Define a validation function
 const pokeCardSchema = yup.object().shape({
   name: yup.string().required(),
@@ -23,33 +22,36 @@ const pokeCardSchema = yup.object().shape({
     }),
 })
 
-const fetchPokemonCard = async (cardId) => {
-  try {
-    const response = await axios.get(`${apiUrl}/${cardId}`);
-    const data = response.data.data; // Adjust according to actual API response structure
 
-    // Validate the response data against the schema
-    await pokeCardSchema.validate(data);
+export default pokeCardSchema
 
-    console.log('Fetched and validated card:', data);
-    return data;
-  } catch (error) {
-    if (error instanceof yup.ValidationError) {
-      console.error('Validation error:', error.errors);
-    } else {
-      console.error('API error:', error.message);
-    }
-    return null;
-  }
-};
+// const fetchPokemonCard = async (cardId) => {
+//   try {
+//     const response = await axios.get(`${apiUrl}/${cardId}`);
+//     const data = response.data.data; // Adjust according to actual API response structure
 
-fetchPokemonCard('xy7-54')
-  .then(card => {
-    if (card) {
-      console.log('Fetched and validated card:', card);
-    } else {
-      console.log('Failed to fetch or validate card');
-    }
-  });
+//     // Validate the response data against the schema
+//     await pokeCardSchema.validate(data);
+
+//     console.log('Fetched and validated card:', data);
+//     return data;
+//   } catch (error) {
+//     if (error instanceof yup.ValidationError) {
+//       console.error('Validation error:', error.errors);
+//     } else {
+//       console.error('API error:', error.message);
+//     }
+//     return null;
+//   }
+// };
+
+// fetchPokemonCard('xy7-54')
+//   .then(card => {
+//     if (card) {
+//       console.log('Fetched and validated card:', card);
+//     } else {
+//       console.log('Failed to fetch or validate card');
+//     }
+//   });
 
 
