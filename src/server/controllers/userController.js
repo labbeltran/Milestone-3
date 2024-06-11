@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import User from '../models/user.js'
+import User from '../models/user.js';
 
 //get all cards
 export const getUsers = async(req, res) => {
@@ -27,7 +27,7 @@ export const getUser = async (req, res) => {
 
 //create new card
 export const createUser = async (req, res) => {
-    const {} = req.body;
+    const { name, email, password } = req.body;
         try{
     
     const newUser = await User.create({});

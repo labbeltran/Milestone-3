@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Cart from '../models/cart';
+import Cart from '../models/cart.js';
 
 
 //get all cards

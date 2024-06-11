@@ -7,7 +7,7 @@ const apiUrl = 'https://api.pokemontcg.io/v2/cards'
 
 
 // get all pokemon cards
-const fetchPokemonCards = async (page = 1, pageSize = 20) => {
+export const fetchPokemonCards = async (page = 1, pageSize = 20) => {
   try {
     const response = await axios.get(apiUrl, {
       headers: {
@@ -48,7 +48,7 @@ const fetchPokemonCards = async (page = 1, pageSize = 20) => {
 };
 
 
-const fetchPokemonCardById = async (cardId) => {
+export const fetchPokemonCardById = async (cardId) => {
   try {
       const response = await axios.get(`${apiUrl}/${cardId}`, {
           headers: {
@@ -71,6 +71,5 @@ const fetchPokemonCardById = async (cardId) => {
 };
 
 
-fetchPokemonCardById('xy7-54');
-
-fetchPokemonCards();
+// fetchPokemonCardById('xy7-54');
+// fetchPokemonCards();

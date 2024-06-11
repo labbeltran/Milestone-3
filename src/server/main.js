@@ -3,8 +3,8 @@ import express from "express";
 import ViteExpress from "vite-express";
 import dotenv from "dotenv";
 import mongoose from 'mongoose'
-import apisRouter from './controllers/api.js'
-import cardApi from './controllers/cardApi.js'
+import apisRouter from './routes/api.js'
+import authRouter from './routes/authRoutes.js'
 
 // CONFIGURATION
 dotenv.config();
@@ -19,7 +19,7 @@ app.use(express.json());
 
 // ROUTES
 app.use('/api', apisRouter)
-app.use('/cardapi', cardApi)
+app.use('/api/auth', authRouter)
 
 //Listen
 ViteExpress.listen(app, PORT, () =>

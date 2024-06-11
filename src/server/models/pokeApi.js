@@ -1,3 +1,5 @@
+// this is the skeleton for ../controllers/cardController.js
+
 import axios from 'axios';
 
 const API_KEY = process.env.API_KEY;
