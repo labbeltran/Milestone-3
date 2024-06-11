@@ -1,14 +1,14 @@
-// import express from 'express';
+import express from 'express';
 
 
-// //Router
-// const router = express.Router();
+//Router
+const router = express.Router();
 
-// //Routes
+//Routes
 
 
-// router.get('*', (req, res) => {
-//     res.json('404')
-// });
+router.get('*', (req, res) => {
+    res.json('404')
+});
 
-// export default router;
+export default router;

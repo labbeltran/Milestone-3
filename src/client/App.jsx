@@ -1,7 +1,11 @@
+import {Routes, Route} from 'react-router-dom';
+import {Container} from 'react-bootstrap';
 import { useEffect, useState } from 'react'
 import CardsGallery from './components/CardsGallery';
 // import Cards from './components/Cards';
 import SearchBar from './components/SearchBar'
+import {Navbar} from 
+
 
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
@@ -30,12 +34,16 @@ function App() {
     setSearchTerm(term);
   };
 
-  return (
+  return (<Container className="mb-4">
+    <>
     <div className="search-bar">
       <SearchBar handleSearch={handleSearch} />
       {message}
       <CardsGallery data={data} />
     </div>
+    </>
+  </Container>
+   
   );
 }
 

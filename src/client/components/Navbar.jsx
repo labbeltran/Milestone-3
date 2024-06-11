@@ -1,39 +1,13 @@
-
+import {Container, Navbar as NavbarBs} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './Home';
+import Home from '../pages/Home';
 import CardsGallery from './components/CardsGallery';
 import SignIn from './components/SignIn';
 import Cart from './components/Cart';
 
-function App() {
+export function NavBar() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/cards">Cards</Link>
-            </li>
-            <li>
-              <Link to="/signinlogin">Sign in/ Log in</Link>
-            </li>
-            <li>
-              <Link to="/cart">Cart</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product" element={<CardsGallery />} />
-          <Route path="/signinlogin" element={<SignIn />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </div>
-    </Router>
+    
   );
 }
 
