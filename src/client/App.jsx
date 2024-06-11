@@ -2,9 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { selectUsers } from './store/usersSlice'
+//import {useSelector} from 'react-redux'
 
 function App() {
   const [count, setCount] = useState(0)
+  const user = useSelector(selectUsers)
 
   return (
     <>
@@ -29,6 +32,20 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
+  //return (
+  //<>
+  //{
+  //user.currentUser ? 
+  //    <BrowserRouter>
+  //    <Routes>
+  //      <Route index element={<LoginPage />} />
+  //      <Route path="add-book" element={<AddBookPage />} />
+  //      <Route path="book/:id" element={<SingleBookPage />} />
+  //    </Routes>
+  //  </BrowserRouter>
+  //<LoginPage />
+  //} 
+  //this is how the dude has it for the firebase tutorial
   )
 }
 
