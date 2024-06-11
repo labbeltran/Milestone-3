@@ -47,4 +47,30 @@ const fetchPokemonCards = async (page = 1, pageSize = 20) => {
   }
 };
 
+
+const fetchPokemonCardById = async (cardId) => {
+  try {
+      const response = await axios.get(`${apiUrl}/${cardId}`, {
+          headers: {
+              'X-Api-Key': API_KEY,
+          },
+      });
+
+      const data = response.data.data;
+
+      const pokeCardValue = await pokeCard.validate(data, { stripUnknown: true });
+
+      console.log('Fetched and validated card:', pokeCardValue);
+  } catch (error) {
+      if (error instanceof yup.ValidationError) {
+          console.error('Validation error:', error.errors);
+      } else {
+          console.error('API error:', error.message);
+      }
+  }
+};
+
+
+fetchPokemonCardById('xy7-54');
+
 fetchPokemonCards();
