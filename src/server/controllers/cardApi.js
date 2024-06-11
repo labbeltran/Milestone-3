@@ -5,38 +5,25 @@ import { pokeCard } from '../models/pokeCard.js';
 const API_KEY = process.env.API_KEY
 const apiUrl = 'https://api.pokemontcg.io/v2/cards'
 
-// wait for data axios.get
-const fetchWithRetry = async (url, options, retries = 5) => {
-    for (let i = 0; i < retries; i++) {
-      try {
-        return await axios.get(url, options);
-      } catch (error) {
-        if (error.response && error.response.status === 429) {
-          const waitTime = Math.pow(2, i) * 1000; // Exponential backoff
-          console.warn(`Too many requests. Retrying in ${waitTime / 1000} seconds...`);
-          await new Promise(resolve => setTimeout(resolve, waitTime));
-        } else {
-          throw error;
-        }
-      }
-    }
-    throw new Error('Max retries reached');
-};
 
 // get all pokemon cards
-const fetchPokemonCards = async () => {
+const fetchPokemonCards = async (page = 1, pageSize = 20) => {
   try {
-    const response = await fetchWithRetry(apiUrl, {
+    const response = await axios.get(apiUrl, {
       headers: {
         'X-Api-Key': API_KEY,
       },
+      params: {
+        pageSize: pageSize,
+        page: page
+      }
     });
 
     const cards = response.data.data; // The API response structure may vary
 
     for (const card of cards) {
         try {
-            const cardResponse = await fetchWithRetry(`${apiUrl}/${card.id}`, {
+            const cardResponse = await axios.get(`${apiUrl}/${card.id}`, {
                 headers: {
                     'X-Api-Key': API_KEY,
                 },

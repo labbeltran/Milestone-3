@@ -7,6 +7,9 @@ const fetchPokemonCards = async () => {
         const response = await axios.get('https://api.pokemontcg.io/v2/cards', {
             headers: {
                 'X-Api-Key': API_KEY
+            },
+            params: {
+                pageSize: 1 // Fetch only 20 cards at a time
             }
         });
 
