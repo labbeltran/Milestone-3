@@ -1,6 +1,6 @@
 // // import { useState } from 'react'
 
-// // function SearchBar(props){
+// // function SearchBar(props: { handleSearch: (arg0: FormEvent<HTMLFormElement>, arg1: string) => void }){
 // //     let [searchTerm, setSearchTerm] = useState('')
 
 // //     const handleSubmit = (e)=>{

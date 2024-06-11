@@ -10,14 +10,15 @@ function App() {
 
   useEffect(() => {
     if (searchTerm) {
-      document.title=`${searchTerm} Pokemon`
+      document.title=`${searchTerm}, I choose you!`
       const fetchData = async () => {
-        const response = await fetch(`https://api.pokemontcg.io/v2/cardssearch?term=${searchTerm}`)
+        const response = await fetch(`https://api.pokemontcg.io/v2/cards?search?term=${searchTerm}`);
         const resData = await response.json()
         if(resData.results.length > 0) {
           setData(resData.results)
         } else {
-          setMessage('Not Found')
+          setMessage('Not Found');
+          setData([]);
         }
       }
       fetchData()
@@ -25,12 +26,12 @@ function App() {
   }, [searchTerm])
 
   const handleSearch = (e, term) => {
-    e.preventDefault()
-    setSearchTerm(term)
-  }
+    e.preventDefault();
+    setSearchTerm(term);
+  };
 
   return (
-    <div className="App">
+    <div className="search-bar">
       <SearchBar handleSearch={handleSearch} />
       {message}
       <CardsGallery data={data} />

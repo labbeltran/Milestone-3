@@ -1,6 +1,6 @@
 // import cards from './Cards'
 
-// function CardsGallery(props){
+// function CardsGallery(props: { data: any[] }){
 
 //     const display = props.data.map((item, index) => {
 //         return (
