@@ -13,7 +13,6 @@ import {setUser} from '../store/usersSlice.js';
 
 function LoginPage() {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
   const [error, setError] = useState('');
