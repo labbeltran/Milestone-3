@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import CardsGallery from './components/CardsGallery';
-import Cards from './components/Cards';
+// import Cards from './components/Cards';
 import SearchBar from './components/SearchBar'
 
 function App() {
