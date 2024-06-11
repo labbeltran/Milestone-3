@@ -1,0 +1,33 @@
+.home-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-header {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  color: #213547;
+}
+
+.home-paragraph {
+  font-size: 1.2em;
+  color: #646cff;
+}
+
+.home-logo {
+  height: 8em;
+  margin-top: 1rem;
+  animation: logo-spin infinite 20s linear;
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-header {
+    color: #fff;
+  }
+
+  .home-paragraph {
+    color: #61dafb;
+  }
+}
