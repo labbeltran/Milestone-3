@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 // import Cards from './components/Cards';
 import SearchBar from './components/SearchBar'
 
-function CardsGallery() {
+export function CardsGallery() {
   let [searchTerm, setSearchTerm] = useState('')
   let [data, setData] = useState([])
   let [message, setMessage] = useState('Whos that Pokemon!')
@@ -39,7 +39,7 @@ function CardsGallery() {
   );
 }
 
-export default CardsGallery;
+//export default CardsGallery;
 
 
 // function CardsGallery(props: { data: any[] }){
