@@ -1,79 +1,78 @@
 import mongoose from 'mongoose';
-import PokeCard from '../models/pokeCard';
-
+import User from '../models/user.js';
 
 //get all cards
-export const getCards = async(req, res) => {
-    const cards = await Card.find({}).sort 
-    res.status(201).json(cards)
+export const getUsers = async(req, res) => {
+    const users = await User.find({}).sort 
+    res.status(201).json(users)
 }
 
 //get a single card
-export const getCard = async (req, res) => {
+export const getUser = async (req, res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'no card found'})
+        return res.status(404).json({error: 'no user found'})
 
     }
     
-    const card = await Card.findById(id)
+    const user = await User.findById(id)
 
-    if(!card){
-        return res.status(404).json({error: 'no card found'})
+    if(!user){
+        return res.status(404).json({error: 'no user found'})
     }
 
-    res.status(201).json(card)
+    res.status(201).json(user)
 }
 
 //create new card
-export const createCard = async (req, res) => {
-    const {} = req.body;
+export const createUser = async (req, res) => {
+    const { name, email, password } = req.body;
         try{
     
-    const newCard = await Card.create({});
+    const newUser = await User.create({});
 
-    res.status(201).json(newCard);
+    res.status(201).json(newUser);
         } catch (error) {
     res.status(400).json({ error: error.message });
         }
 }
 
 //delete a card
-export const deleteCard = async (req, res) => {
+export const deleteUser = async (req, res) => {
     const { id } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'no card found'})
+        return res.status(404).json({error: 'no user found'})
     }
 
-    const card = await Card.findOneAndDelete({_id: id})
+    const user = await User.findOneAndDelete({_id: id})
 
-    if (!card) {
-        return res.status(404).json({erro: 'no card found'})
+    if (!user) {
+        return res.status(404).json({error: 'no user found'})
     }
 
-    res.status(201).json(card)
+    res.status(201).json(user)
 }
 
 
 //update a card
-export const updateCard = async (req, res) => {
+export const updateUser = async (req, res) => {
     const { id } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'no card found'})
+        return res.status(404).json({error: 'no user found'})
     }
 
-    const card = await Card.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
         {_id: id},
         { ...req.body },
         {new: true, runValidators: true}
     );
 
-    if (!card) {
-        return res.status(404).json({error: 'no card found'})
+    if (!user) {
+        return res.status(404).json({error: 'no user found'})
     }
 
-    res.status(201).json(newCard)
+    res.status(201).json(newUser)
 }

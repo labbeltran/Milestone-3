@@ -1,3 +1,5 @@
+// this is the skeleton for ../controllers/cardController.js
+
 import axios from 'axios';
 
 const API_KEY = process.env.API_KEY;
@@ -7,6 +9,9 @@ const fetchPokemonCards = async () => {
         const response = await axios.get('https://api.pokemontcg.io/v2/cards', {
             headers: {
                 'X-Api-Key': API_KEY
+            },
+            params: {
+                pageSize: 1 // Fetch only 20 cards at a time
             }
         });
 
