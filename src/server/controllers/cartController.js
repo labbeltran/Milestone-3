@@ -4,7 +4,7 @@ import Cart from '../models/cart.js';
 
 //get all cards
 export const getCarts = async(req, res) => {
-    const carts = await Cart.find({}).sort 
+    const carts = await Cart.find({}).sort ({createdAt: -1})
     res.status(201).json(carts)
 }
 
@@ -75,5 +75,5 @@ export const updateCart = async (req, res) => {
         return res.status(404).json({error: 'no cart found'})
     }
 
-    res.status(201).json(newCart)
+    res.status(201).json(cart)
 }
