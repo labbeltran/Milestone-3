@@ -3,7 +3,7 @@ import Item from '../models/item.js';
 
 //get all cards
 export const getItems = async(req, res) => {
-    const items = await Item.find({}).sort 
+    const items = await Item.find({}).sort ({createdAt: -1})
     res.status(201).json(items)
 }
 
@@ -74,5 +74,5 @@ export const updateItem = async (req, res) => {
         return res.status(404).json({error: 'no item found'})
     }
 
-    res.status(201).json(newItem)
+    res.status(201).json(item)
 }

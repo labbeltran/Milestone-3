@@ -3,7 +3,7 @@ import User from '../models/user.js';
 
 //get all cards
 export const getUsers = async(req, res) => {
-    const users = await User.find({}).sort 
+    const users = await User.find({}).sort ({createdAt: -1})
     res.status(201).json(users)
 }
 
@@ -30,7 +30,7 @@ export const createUser = async (req, res) => {
     const { name, email, password } = req.body;
         try{
     
-    const newUser = await User.create({});
+    const newUser = await User.create({ name, email, password });
 
     res.status(201).json(newUser);
         } catch (error) {
@@ -74,5 +74,5 @@ export const updateUser = async (req, res) => {
         return res.status(404).json({error: 'no user found'})
     }
 
-    res.status(201).json(newUser)
+    res.status(201).json(user)
 }
