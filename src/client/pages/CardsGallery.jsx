@@ -39,7 +39,7 @@ export function CardsGallery() {
   );
 }
 
-export default CardsGallery;
+
 
 
 // function CardsGallery(props: { data: any[] }){

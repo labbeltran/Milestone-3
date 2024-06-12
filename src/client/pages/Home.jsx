@@ -3,7 +3,7 @@ import {auth} from '../firebase/config.js'
 import {useDispatch} from 'react-redux';
 import {setUser} from '../store/usersSlice.js';
 
-export function Home = () => {
+export function Home() {
 const dispatch = useDispatch();
   function handleSignOut (){
     if(confirm('are you sure you want to log out?')) {
@@ -24,4 +24,4 @@ const dispatch = useDispatch();
     </button>
     </div>
   );
-};
+}
