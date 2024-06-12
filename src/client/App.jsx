@@ -1,19 +1,19 @@
 import {Routes, Route} from 'react-router-dom';
-import {Container} from 'react-boostrap';
-import{Home} from './client/pages/Home';
-import{CardsGallery} from './client/pages/CardsGallery';
-import{Cards} from './client/pages/Cards';
-import{Cart} from './client/pages/Cart';
-import {Navbar} from './client/components/Navbar';
+import {Container} from 'react-bootstrap';
+import{Home} from './pages/Home.jsx';
+import{CardsGallery} from './pages/CardsGallery.jsx';
+import{Cards} from './pages/Cards.jsx';
+import{Cart} from './pages/Cart.jsx';
+import {NavBar} from './components/Navbar.jsx';
 // import { selectUsers } from './store/usersSlice'
 //import {useSelector} from 'react-redux'
 
-function App() {
+export function App() {
   
 
   return (
    <>
-   <Navbar/>
+   <NavBar/>
    <Container>
     <Routes>
       <Route path="/" element={<Home/>}></Route>
@@ -27,5 +27,5 @@ function App() {
   )
 }
 
-export default App
+
 

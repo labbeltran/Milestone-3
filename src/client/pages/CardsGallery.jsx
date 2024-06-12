@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // import Cards from './components/Cards';
-import SearchBar from './components/SearchBar'
+import {SearchBar} from '../components/SearchBar'
 
 export function CardsGallery() {
   let [searchTerm, setSearchTerm] = useState('')
