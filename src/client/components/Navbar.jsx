@@ -1,7 +1,9 @@
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './components/Home';
-import Product from './components/Product';
+import Home from './Home';
+import CardsGallery from './components/CardsGallery';
+import SignIn from './components/SignIn';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -26,9 +28,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/signinlogin" element={<Product />} />
-          <Route path="/cart" element={<Product />} />
+          <Route path="/product" element={<CardsGallery />} />
+          <Route path="/signinlogin" element={<SignIn />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </Router>
