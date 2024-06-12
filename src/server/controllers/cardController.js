@@ -7,48 +7,58 @@ const apiUrl = 'https://api.pokemontcg.io/v2/cards'
 
 
 // get all pokemon cards
-export const fetchPokemonCards = async (page = 1, pageSize = 20) => {
+export const fetchPokemonCards = async (req, res) => {
+  const { page = 1, pageSize = 20} =  req.query;
+
   try {
     const response = await axios.get(apiUrl, {
       headers: {
         'X-Api-Key': API_KEY,
       },
       params: {
-        pageSize: pageSize,
-        page: page
-      }
+        pageSize: parseInt(pageSize),
+        page: parseInt(page)
+      },
+      timeout: 5000,
     });
 
     const cards = response.data.data; // The API response structure may vary
 
-    for (const card of cards) {
+    const cardDetails = await Promise.all(cards.map(async (card) => {
         try {
             const cardResponse = await axios.get(`${apiUrl}/${card.id}`, {
                 headers: {
                     'X-Api-Key': API_KEY,
                 },
+                timeout: 5000,
             });
             const data = cardResponse.data.data; // Adjust according to actual API response structure
         
             // Validate the response data against the schema
             const pokeCardValue = await pokeCard.validate(data, {stripUnknown: true});
         
-            console.log('Fetched and validated card:', pokeCardValue);
+            return pokeCardValue;
           } catch (error) {
             if (error instanceof yup.ValidationError) {
               console.error('Validation error:', error.errors);
             } else {
               console.error('API error:', error.message);
           }
+          return null;
         }
-    }
+      }));
+      const validCards = cardDetails.filter(card => card !== null);
+
+      res.json(validCards)
   } catch (error) {
     console.error('Error fetching data from Pokémon TCG API:', error);
   }
 };
 
 
-export const fetchPokemonCardById = async (cardId) => {
+export const fetchPokemonCardById = async (req, res) => {
+  const { id: cardId } = req.params;
+
   try {
       const response = await axios.get(`${apiUrl}/${cardId}`, {
           headers: {
@@ -60,7 +70,7 @@ export const fetchPokemonCardById = async (cardId) => {
 
       const pokeCardValue = await pokeCard.validate(data, { stripUnknown: true });
 
-      console.log('Fetched and validated card:', pokeCardValue);
+      res.json(pokeCardValue);
   } catch (error) {
       if (error instanceof yup.ValidationError) {
           console.error('Validation error:', error.errors);

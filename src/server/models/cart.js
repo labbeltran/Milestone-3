@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const { Schema } = mongooose;
+const { Schema } = mongoose;
 
 const cartSchema = new Schema({
 
