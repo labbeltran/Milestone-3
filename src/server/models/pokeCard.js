@@ -3,6 +3,7 @@ import * as yup from 'yup';
 
 // Define a validation function
 const pokeCardSchema = yup.object().shape({
+  id: yup.string().required(),
   name: yup.string().required(),
   set: yup.object().shape({
     id: yup.string().required(),
