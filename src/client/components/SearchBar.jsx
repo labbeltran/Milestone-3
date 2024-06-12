@@ -1,3 +1,9 @@
+export function SearchBar(){
+    return(
+        <></>
+    )
+}
+
 // // import { useState } from 'react'
 
 // // function SearchBar(props: { handleSearch: (arg0: FormEvent<HTMLFormElement>, arg1: string) => void }){
