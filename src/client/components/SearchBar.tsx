@@ -1,8 +1,40 @@
-export function SearchBar(){
-    return(
-        <></>
-    )
-}
+import React from "react";
+import {useState} from "react";
+import {useNavigate} from 'react-router-dom';
+
+
+type SearchTermProps = {
+ 
+    id: number
+    name: string
+    set: {
+      id: string, 
+      name: string
+    }
+  }
+export function SearchBar(props: { handleSearch: (arg0: React.FormEvent<HTMLFormElement>, arg1: string) => void }){
+        let [searchTerm, setSearchTerm] = useState('')
+        const navigate = useNavigate();
+    
+        const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+            e.preventDefault();
+            navigate(`/search/${searchTerm}`);
+        }
+    
+        return (
+                <form onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+                    <input 
+                    type="text" 
+                    placeholder="Who's that Pokemon?" 
+                    onChange={(e) => setSearchTerm(e.target.value)} 
+                    />
+                    <input 
+                    type="submit" 
+                    value="Search"
+                    />
+                </form>
+        )
+    }
 
 // // import { useState } from 'react'
 

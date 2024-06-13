@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword, 
   sendPasswordResetEmail, 
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   onAuthStateChanged
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
@@ -55,7 +54,9 @@ function handlePasswordReset() {
 }
 
     return (
+      // eslint-disable-next-line react/jsx-no-comment-textnodes
       <>
+        // eslint-disable-next-line no-undef
         { isLoading && <FullPageLoader></FullPageLoader> }
         
         <div className="">

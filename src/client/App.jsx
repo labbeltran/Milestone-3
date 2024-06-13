@@ -5,11 +5,13 @@ import{CardsGallery} from './pages/CardsGallery.tsx';
 import{Cards} from './pages/Cards.tsx';
 import{ShoppingCart} from './pages/ShoppingCart.tsx';
 import {NavBar} from './components/Navbar.tsx';
+import {LoginPage} from './SignIn.jsx';
+import {SearchResultsPage} from './pages/SearchResultsPage.tsx';
 // import { selectUsers } from './store/usersSlice'
 //import {useSelector} from 'react-redux'
 
 export function App() {
-  
+
 
   return (
    <>
@@ -20,12 +22,11 @@ export function App() {
       <Route path="/cardsgallery" element={<CardsGallery/>}></Route>
       <Route path="/cards" element={<Cards/>}></Route>
       <Route path="/cart" element={<ShoppingCart/>}></Route>
+      <Route path="/SignIn" element={<LoginPage/>}></Route> 
+      <Route path="/search/:searchTerm" element={<SearchResultsPage/>}></Route>
     </Routes>
 
    </Container>
    </>
   )
 }
-
-
-

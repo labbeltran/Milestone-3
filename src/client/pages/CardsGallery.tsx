@@ -43,9 +43,9 @@ export function CardsGallery() {
   return (
     <>
       <h1>Store</h1>
-      <Row md={2} xs={1} lg={3} className="g-3">
+      <Row md={2} xs={1} lg={3} className="g-3 fs-3">
         {cards && cards.map(item => (
-          <Col key={item.name}>
+          <Col key={item.name} className="fs-6">
             <Cards  {...item} />
           </Col>
         ))}
