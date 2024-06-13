@@ -1,17 +1,22 @@
-// import {Col, Row} from 'react-bootstrap';
-// import {Cards} from './Cards'
+import React from 'react';
+import { Col, Row } from "react-bootstrap"
+import {Cards} from './Cards'
+import storeItems from "../data/items.json"
 
-// export function CardsGallery(){
-//     return(
-//         <>
-//             <h1>PokeStore</h1>
-//             <Row md={3} xs={1} lg={4} className="g-3">
-//                 {}
-//                 <Col key={card.id}><Cards {...{card}}/></Col>
-//             </Row>
-//         </>
-//     )
-// }
+export function CardsGallery() {
+  return (
+    <>
+      <h1>Store</h1>
+      <Row md={2} xs={1} lg={3} className="g-3">
+        {storeItems.map(item => (
+          <Col key={item.id}>
+            <Cards {...item} />
+          </Col>
+        ))}
+      </Row>
+    </>
+  )
+}
 
 
 
