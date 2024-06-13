@@ -28,10 +28,10 @@ export const getCart = async (req, res) => {
 
 //create new card
 export const createCart = async (req, res) => {
-    const {} = req.body;
+    const { items, total, userId } = req.body;
         try{
     
-    const newCart = await Cart.create({});
+    const newCart = await Cart.create({ items, total, userId });
 
     res.status(201).json(newCart);
         } catch (error) {
