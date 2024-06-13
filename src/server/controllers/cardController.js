@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import { pokeCard } from '../models/pokeCard.js';
 
-const API_KEY = process.env.API_KEY
+const API_KEY = process.env.POKE_API_KEY
 const apiUrl = 'https://api.pokemontcg.io/v2/cards'
 
 

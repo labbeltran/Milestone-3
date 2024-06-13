@@ -1,12 +1,28 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { auth } from '../../firebase/firebase';
+import React, { useEffect, useState } from 'react';
 import {SearchBar} from '../components/SearchBar'
-
-import React from 'react';
 import { useShoppingCart } from '../context/shoppingCartContext';
+import { User } from 'firebase/auth';
+import {SearchBar} from '../components/SearchBar'
 
 export function NavBar() {
   const { openCart, cartQuantity } = useShoppingCart();
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleLogout = async () => {
+    await auth.signOut();
+  };
+
 
   return (
     <NavbarBs sticky="top" className="bg-white shadow-lg mb-3">
@@ -20,7 +36,11 @@ export function NavBar() {
           } } />
         </Nav>
         <Nav>
-          <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+          {user ? (
+            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+          ) : (
+            <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+          )}
         </Nav>
           <Button
               onClick={openCart}
