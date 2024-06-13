@@ -1,11 +1,27 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-
-import React from 'react';
+import { auth } from '../../firebase/firebase';
+import React, { useEffect, useState } from 'react';
 import { useShoppingCart } from '../context/shoppingCartContext';
+import { User } from 'firebase/auth';
+import {SearchBar} from '../components/SearchBar'
 
 export function NavBar() {
   const { openCart, cartQuantity } = useShoppingCart();
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleLogout = async () => {
+    await auth.signOut();
+  };
+
 
   return (
     <NavbarBs sticky="top" className="bg-white shadow-lg mb-3">
@@ -14,12 +30,16 @@ export function NavBar() {
           <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink}>Cards Gallery</Nav.Link>
           <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link>
-          {/* <Nav.Link to="/shoppingcart" as={NavLink}> */}
-            
-          {/* </Nav.Link> */}
+          <SearchBar handleSearch={function (arg0: React.FormEvent<HTMLFormElement>, arg1: string): void {
+            throw new Error('Function not implemented.');
+          } } />
         </Nav>
         <Nav>
-          <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+          {user ? (
+            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+          ) : (
+            <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+          )}
         </Nav>
           <Button
               onClick={openCart}
