@@ -1,29 +1,16 @@
-import { doSignOut } from '../../firebase/auth';
-import { auth } from '../../firebase/config';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../store/usersSlice';
 import React from 'react';
+import PokemonLogo from '../assets/Pokemon.svg';
+import './Home.css'
 
 export function Home() {
   const dispatch = useDispatch();
 
-  function handleSignOut() {
-    if (window.confirm('Are you sure you want to log out?')) {
-      doSignOut().then(() => {
-        dispatch(setUser(null));
-      }).catch((error: any) => {
-        console.log(error);
-      });
-    }
-  }
-
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the Home Page!</p>
-      <button onClick={handleSignOut}>
-        Logout
-      </button>
-    </div>
+    <div className="home-container">
+      <h1 className="home-header">LAMM Pokemon Card Store</h1>
+      <p className="home-paragraph">Welcome to the LAMM Pokemon Card Store!</p>
+      <img src={PokemonLogo} className="home-logo" alt="Pokemon logo" />
+    </div> 
   );
 }
