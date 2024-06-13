@@ -1,5 +1,5 @@
 import express from 'express';
-import {fetchPokemonCardById, fetchPokemonCards} from '../controllers/cardController.js';
+import {fetchPokemonCardById, fetchPokemonCards, fetchPokemonCardByName} from '../controllers/cardController.js';
 import {createItem, getItem, getItems, updateItem, deleteItem} from '../controllers/itemController.js';
 import {createUser, getUser, getUsers, updateUser, deleteUser} from '../controllers/userController.js';
 
@@ -12,6 +12,7 @@ const router = express.Router();
 //Pokemon cards
 router.get('/cards', fetchPokemonCards);
 router.get('/cards/:id', fetchPokemonCardById);
+router.get('/cards/name/:name', fetchPokemonCardByName);
 
 //Items controller
 router.get('/users', getUsers);

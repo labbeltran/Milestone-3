@@ -27,10 +27,10 @@ export const getItem = async (req, res) => {
 
 //create new card
 export const createItem = async (req, res) => {
-    const {} = req.body;
+    const { id, name, quantity, price } = req.body;
         try{
     
-    const newItem = await Item.create({});
+    const newItem = await Item.create({ id, name, quantity, price });
 
     res.status(201).json(newItem);
         } catch (error) {

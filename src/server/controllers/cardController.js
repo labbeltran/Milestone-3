@@ -80,6 +80,38 @@ export const fetchPokemonCardById = async (req, res) => {
   }
 };
 
+export const fetchPokemonCardByName = async (req, res) => {
+  const { name: cardName } = req.params;
+
+  try {
+    const response = await axios.get(`${apiUrl}`, {
+        headers: {
+            'X-Api-Key': API_KEY,
+        },
+        params: {
+          name: cardName,
+        },
+    });
+
+    const data = response.data.data;
+
+    const card = data.find(card => card.name.toLowerCase() === cardName.toLowerCase());
+
+    if (!card) {
+      return res.status(404).json({ message: 'Card with name ${cardName} not found' })
+    }
+
+    const pokeCardValue = await pokeCard.validate(card, { stripUnknown: true });
+
+    res.json(pokeCardValue);
+} catch (error) {
+    if (error instanceof yup.ValidationError) {
+        console.error('Validation error:', error.errors);
+    } else {
+        console.error('API error:', error.message);
+    }
+  } 
+};
 
 // fetchPokemonCardById('xy7-54');
 // fetchPokemonCards();
