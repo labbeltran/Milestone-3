@@ -13,7 +13,6 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.1",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
@@ -25,10 +24,10 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.23.1",
-    "typescript": "^5.4.5",
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
@@ -39,6 +38,7 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "express": "^4.19.2",
     "nodemon": "^3.1.3",
+    "typescript": "^5.4.5",
     "vite": "^5.2.12",
     "vite-express": "^0.16.0"
   }

@@ -1,8 +1,8 @@
 import {Routes, Route} from 'react-router-dom';
 import {Container} from 'react-bootstrap';
 import{Home} from './pages/Home.jsx';
-import{CardsGallery} from './pages/CardsGallery.jsx';
-import{Cards} from './pages/Cards.jsx';
+// import{CardsGallery} from './pages/CardsGallery.jsx';
+// import{Cards} from './pages/Cards.jsx';
 import{Cart} from './pages/Cart.jsx';
 import {NavBar} from './components/Navbar.jsx';
 // import { selectUsers } from './store/usersSlice'

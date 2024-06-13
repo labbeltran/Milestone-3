@@ -1,17 +1,18 @@
-import {Button, Container, Nav, Navbar, NavLink} from 'react-bootstrap';
+import {Button, Container, Nav, Navbar, } from 'react-bootstrap';
+import {NavLink} from 'react-router-dom';
+import './Navbar.css';
 
 
 export function NavBar() {
   return(
-    <Navbar sticky="top" className= "bg-grey shadow-lg mb-3">
-      <Container>
+    <Navbar sticky="top" className= "bg-light shadow-lg mb-3 w-100">
+      <Container fluid>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink}>Cards Gallery</Nav.Link>
           <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link>
-          <Nav.Link to="/cart" as={NavLink}>Cart</Nav.Link>
-        </Nav>
-        <Button
+          <Nav.Link to="/cart" as={NavLink}>
+          <Button
             // onClick={openCart}
             style={{ width: "3rem", height: "3rem", position: "relative" }}
             variant="outline-primary"
@@ -39,6 +40,9 @@ export function NavBar() {
             >
               {/* {cartQuantity} */}
             </div></Button>
+          </Nav.Link>
+        </Nav>
+        
       </Container>
     </Navbar>
   )
