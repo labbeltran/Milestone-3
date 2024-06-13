@@ -1,16 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row } from "react-bootstrap"
 import {Cards} from './Cards'
-import storeItems from "../data/items.json"
+
+
+type CardItem = {
+ 
+  id: number
+  name: string
+  set: {
+    id: string, 
+    name: string
+  }
+  rarity: string
+  flavorText: string
+  images: {
+    small: string 
+    large: string
+  }
+  cardmarket: {
+    prices: {
+      averageSellPrice: number
+    }
+  }
+}
 
 export function CardsGallery() {
+    const [cards, setCards] = useState<CardItem[] | null>(null);
+
+    useEffect(()=>{
+      const fetchCards = async ()=> {
+        const response = await fetch('api/cards');
+        const json= await response.json();
+
+        if(response.ok){
+            setCards(json)
+        };
+      };
+      fetchCards()
+    }, [])
+
+
   return (
     <>
       <h1>Store</h1>
       <Row md={2} xs={1} lg={3} className="g-3">
-        {storeItems.map(item => (
-          <Col key={item.id}>
-            <Cards {...item} />
+        {cards && cards.map(item => (
+          <Col key={item.name}>
+            <Cards  {...item} />
           </Col>
         ))}
       </Row>

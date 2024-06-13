@@ -4,13 +4,28 @@ import { useShoppingCart } from '../context/shoppingCartContext'
 import { formatCurrency } from "../utilities/formatCurrency"
 
 type CardItemProps = {
-  id: number
-  name: string
-  price: number
-  imgUrl: string
-}
+ 
+    id: number
+    name: string
+    set: {
+      id: string, 
+      name: string
+    }
+    rarity: string
+    flavorText: string
+    images: {
+      small: string 
+      large: string
+    }
+    cardmarket: {
+      prices: {
+        averageSellPrice: number
+      }
+    }
+  }
 
-export function Cards({ id, name, price, imgUrl }: CardItemProps) {
+
+export function Cards({ id, name, set, rarity, flavorText, images, cardmarket }: CardItemProps) {
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -23,14 +38,17 @@ export function Cards({ id, name, price, imgUrl }: CardItemProps) {
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={imgUrl}
+        src={images.large}
         height="200px"
         style={{ objectFit: "cover" }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
           <span className="fs-2">{name}</span>
-          <span className="ms-2 text-muted">{formatCurrency(price)}</span>
+          <span className="fs-2">{set.name}</span>
+          <span className="fs-2">{rarity}</span>
+          <span className="fs-2">{flavorText}</span>
+          <span className="ms-2 text-muted">{formatCurrency(cardmarket.prices.averageSellPrice)}</span>
         </Card.Title>
         <div className="mt-auto">
           {quantity === 0 ? (
