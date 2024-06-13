@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Offcanvas, Stack } from "react-bootstrap";
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { formatCurrency } from "../utilities/formatCurrency";
-import { CartItem } from "../components/CartItem";
-import storeItems from "../data/items.json";
+import { CartItem } from "../components/CartItem"
 
 type ShoppingCartProps = {
   isOpen: boolean;
 };
+
+type StoreItem = {
+  id: number;
+  name: string;
+  price: number;
+  // Add other properties as needed
+};
+
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart();
+  const [storeItems, setStoreItems] = useState<StoreItem[]>([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch("api/cards/:id");
+        const items: StoreItem[] = await response.json(); // Parse response as JSON
+        setStoreItems(items);
+      } catch (error) {
+        console.error("Failed to fetch store items:", error);
+      }
+    };
+    fetchItems();
+  }, []);
 
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
@@ -25,7 +46,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             Total{" "}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
-                const item = storeItems.find((i: { id: number; }) => i.id === cartItem.id);
+                const item = storeItems.find((i) => i.id === cartItem.id);
                 return total + (item?.price || 0) * cartItem.quantity;
               }, 0)
             )}
