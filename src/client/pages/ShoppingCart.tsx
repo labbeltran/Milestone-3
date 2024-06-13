@@ -12,7 +12,7 @@ type StoreItem = {
   id: number;
   name: string;
   price: number;
-  // Add other properties as needed
+  item: [];
 };
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
@@ -23,7 +23,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
     const fetchItems = async () => {
       try {
         const response = await fetch("api/cards/:id");
-        const items: StoreItem[] = await response.json(); // Parse response as JSON
+        const items: StoreItem[] = await response.json();
         setStoreItems(items);
       } catch (error) {
         console.error("Failed to fetch store items:", error);
@@ -47,7 +47,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
                 const item = storeItems.find((i) => i.id === cartItem.id);
-                return total + (item?.price || 0) * cartItem.quantity;
+                return total + (item? item.price * cartItem.quantity: 0);
               }, 0)
             )}
           </div>

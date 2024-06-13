@@ -39,7 +39,7 @@ import React, { useEffect, useState } from "react";
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await fetch('api/cards/:id');
+        const response = await fetch(`api/cards/${id}`);
         const json = await response.json();
 
         if (response.ok) {
