@@ -9,37 +9,40 @@ import {
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
 import {setUser} from './store/usersSlice.ts';
+import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
   const dispatch = useDispatch();
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      dispatch(setUser({id: user.uid, email: user.email }));
-    } else {
-      dispatch(setUser(null));
-    }
-  });
-
-  function handleCredentials(e) {
-    setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
-  }
-
-  function handleSignup(e) {
-    e.preventDefault();
-    setError("");
-    createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-  .catch((error) => {
-    setError(error.message);
-  });
-  }
-
-  function handleLogin(e) {
-    e.preventDefault();
-    setError("");
+      dispatch(setUser({id: user.uid, email: user.email }))
+      } else {
+        dispatch(setUser(null));
+        }
+        });
+        
+        function handleCredentials(e) {
+          setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
+          }
+          
+          function handleSignup(e) {
+            e.preventDefault();
+            setError("");
+            createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+            .catch((error) => {
+              setError(error.message);
+              });
+              }
+              
+              function handleLogin(e) {
+                e.preventDefault();
+                setError("");
+                navigate(`/cardsgallery`);
     
   signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
     .catch((error) => {
@@ -54,8 +57,11 @@ export function LoginPage() {
   }
 
     return (
+      // eslint-disable-next-line react/jsx-no-comment-textnodes
       <>
+
         {/* { isLoading && <FullPageLoader></FullPageLoader> } */}
+
         
         <div className="">
           <section>
