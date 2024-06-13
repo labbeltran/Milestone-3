@@ -33,6 +33,7 @@ export function LoginPage() {
           function handleSignup(e) {
             e.preventDefault();
             setError("");
+            navigate(`/cardsgallery`);
             createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
             .catch((error) => {
               setError(error.message);

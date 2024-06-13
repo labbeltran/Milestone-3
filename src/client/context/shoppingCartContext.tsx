@@ -117,7 +117,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         closeCart,
         cartItems,
         cartQuantity,
-        storeItems, // Provide storeItems to the context
+        storeItems, 
       }}
     >
       {children}
