@@ -43,10 +43,10 @@ export function LoginPage() {
                 e.preventDefault();
                 setError("");
                 navigate(`/cardsgallery`);
-    
-  signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-    .catch((error) => {
-    setError(error.message);
+                
+                signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+                .catch((error) => {
+                  setError(error.message);
   });
   }
 
