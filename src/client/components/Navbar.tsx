@@ -1,6 +1,6 @@
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import './Navbar.css';
+
 import React from 'react';
 import { useShoppingCart } from '../context/shoppingCartContext';
 
@@ -8,14 +8,17 @@ export function NavBar() {
   const { openCart, cartQuantity } = useShoppingCart();
 
   return (
-    <Navbar sticky="top" className="bg-light shadow-lg mb-3 w-100">
+    <NavbarBs sticky="top" className="bg-white shadow-lg mb-3">
       <Container fluid>
-        <Nav className="me-auto">
+        <Nav className=" me-auto">
           <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink}>Cards Gallery</Nav.Link>
           <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link>
-          <Nav.Link to="/shoppingcart" as={NavLink}>
-            <Button
+          {/* <Nav.Link to="/shoppingcart" as={NavLink}> */}
+            
+          {/* </Nav.Link> */}
+        </Nav>
+          <Button
               onClick={openCart}
               style={{ width: "3rem", height: "3rem", position: "relative" }}
               variant="outline-primary"
@@ -43,9 +46,7 @@ export function NavBar() {
                 {cartQuantity}
               </div>
             </Button>
-          </Nav.Link>
-        </Nav>
       </Container>
-    </Navbar>
+    </NavbarBs>
   );
 }
