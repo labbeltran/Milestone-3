@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap"
 import {StoreItem} from '../data/StoreItems'
 import storeItems from "../data/items.json"
 
-export function Store() {
+export function CardsGallery() {
   return (
     <>
       <h1>Store</h1>
