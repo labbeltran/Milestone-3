@@ -57,8 +57,11 @@ export function LoginPage() {
   }
 
     return (
+      // eslint-disable-next-line react/jsx-no-comment-textnodes
       <>
+
         {/* { isLoading && <FullPageLoader></FullPageLoader> } */}
+
         
         <div className="">
           <section>

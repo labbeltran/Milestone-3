@@ -11,7 +11,7 @@ import {SearchResultsPage} from './pages/SearchResultsPage.tsx';
 //import {useSelector} from 'react-redux'
 
 export function App() {
-  
+
 
   return (
    <>
@@ -30,5 +30,4 @@ export function App() {
    </>
   )
 }
-
 
