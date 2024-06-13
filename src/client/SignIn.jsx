@@ -1,4 +1,4 @@
-import FullPageLoader from './components/FullPageLoader.tsx';
+// import FullPageLoader from './components/FullPageLoader.tsx';
 import {useState} from 'react';
 import {auth} from '../firebase/config.ts';
 import { 
