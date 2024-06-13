@@ -1,11 +1,11 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { auth } from '../../firebase/firebase';
+import { auth } from '../../firebase/config';
 import React, { useEffect, useState } from 'react';
 import {SearchBar} from '../components/SearchBar'
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { User } from 'firebase/auth';
-import {SearchBar} from '../components/SearchBar'
+
 
 export function NavBar() {
   const { openCart, cartQuantity } = useShoppingCart();
