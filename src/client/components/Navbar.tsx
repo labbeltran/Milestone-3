@@ -18,6 +18,9 @@ export function NavBar() {
             
           {/* </Nav.Link> */}
         </Nav>
+        <Nav>
+          <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+        </Nav>
           <Button
               onClick={openCart}
               style={{ width: "3rem", height: "3rem", position: "relative" }}

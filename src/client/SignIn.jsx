@@ -1,17 +1,16 @@
-import FullPageLoader from '../components/FullPageLoader.jsx';
+import FullPageLoader from './components/FullPageLoader.tsx';
 import {useState} from 'react';
-import {auth} from '../firebase/config.js';
+import {auth} from '../firebase/config.ts';
 import { 
   createUserWithEmailAndPassword, 
   sendPasswordResetEmail, 
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   onAuthStateChanged
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
-import {setUser} from '../store/usersSlice.js';
+import {setUser} from './store/usersSlice.ts';
 
-function LoginPage() {
+export function LoginPage() {
   const dispatch = useDispatch();
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
@@ -42,21 +41,21 @@ function LoginPage() {
     e.preventDefault();
     setError("");
     
-signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-  .catch((error) => {
-   setError(error.message);
+  signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+    .catch((error) => {
+    setError(error.message);
   });
   }
 
-function handlePasswordReset() {
-  const email = prompt('Please enter your email');
-  sendPasswordResetEmail(auth, email);
-  alert('Email sent!');
-}
+  function handlePasswordReset() {
+    const email = prompt('Please enter your email');
+    sendPasswordResetEmail(auth, email);
+    alert('Email sent!');
+  }
 
     return (
       <>
-        { isLoading && <FullPageLoader></FullPageLoader> }
+        {/* { isLoading && <FullPageLoader></FullPageLoader> } */}
         
         <div className="">
           <section>
@@ -106,4 +105,4 @@ function handlePasswordReset() {
     )
   }
   
-  export default LoginPage
+  
