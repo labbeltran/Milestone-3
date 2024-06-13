@@ -1,6 +1,6 @@
-import FullPageLoader from '../components/FullPageLoader.jsx';
+import FullPageLoader from './components/FullPageLoader.tsx';
 import {useState} from 'react';
-import {auth} from '../firebase/config.js';
+import {auth} from '../firebase/config.ts';
 import { 
   createUserWithEmailAndPassword, 
   sendPasswordResetEmail, 
@@ -8,56 +8,60 @@ import {
   onAuthStateChanged
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
-import {setUser} from '../store/usersSlice.js';
+import {setUser} from './store/usersSlice.ts';
+import { useNavigate } from 'react-router-dom';
 
-function LoginPage() {
+export function LoginPage() {
   const dispatch = useDispatch();
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      dispatch(setUser({id: user.uid, email: user.email }));
-    } else {
-      dispatch(setUser(null));
-    }
-  });
-
-  function handleCredentials(e) {
-    setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
-  }
-
-  function handleSignup(e) {
-    e.preventDefault();
-    setError("");
-    createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-  .catch((error) => {
+      dispatch(setUser({id: user.uid, email: user.email }))
+      } else {
+        dispatch(setUser(null));
+        }
+        });
+        
+        function handleCredentials(e) {
+          setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
+          }
+          
+          function handleSignup(e) {
+            e.preventDefault();
+            setError("");
+            createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+            .catch((error) => {
+              setError(error.message);
+              });
+              }
+              
+              function handleLogin(e) {
+                e.preventDefault();
+                setError("");
+                navigate(`/cardsgallery`);
+    
+  signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+    .catch((error) => {
     setError(error.message);
   });
   }
 
-  function handleLogin(e) {
-    e.preventDefault();
-    setError("");
-    
-signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-  .catch((error) => {
-   setError(error.message);
-  });
+  function handlePasswordReset() {
+    const email = prompt('Please enter your email');
+    sendPasswordResetEmail(auth, email);
+    alert('Email sent!');
   }
-
-function handlePasswordReset() {
-  const email = prompt('Please enter your email');
-  sendPasswordResetEmail(auth, email);
-  alert('Email sent!');
-}
 
     return (
       // eslint-disable-next-line react/jsx-no-comment-textnodes
       <>
-        // eslint-disable-next-line no-undef
-        { isLoading && <FullPageLoader></FullPageLoader> }
+
+        {/* { isLoading && <FullPageLoader></FullPageLoader> } */}
+
         
         <div className="">
           <section>
@@ -107,4 +111,4 @@ function handlePasswordReset() {
     )
   }
   
-  export default LoginPage
+  

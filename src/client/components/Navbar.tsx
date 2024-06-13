@@ -19,6 +19,9 @@ export function NavBar() {
             throw new Error('Function not implemented.');
           } } />
         </Nav>
+        <Nav>
+          <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+        </Nav>
           <Button
               onClick={openCart}
               style={{ width: "3rem", height: "3rem", position: "relative" }}
