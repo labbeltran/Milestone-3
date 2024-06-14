@@ -16,7 +16,7 @@ export function LoginPage() {
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -33,7 +33,6 @@ export function LoginPage() {
           function handleSignup(e) {
             e.preventDefault();
             setError("");
-            navigate(`/cardsgallery`);
             createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
             .catch((error) => {
               setError(error.message);
@@ -43,12 +42,12 @@ export function LoginPage() {
               function handleLogin(e) {
                 e.preventDefault();
                 setError("");
-                navigate(`/cardsgallery`);
                 
                 signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
                 .catch((error) => {
                   setError(error.message);
-  });
+                });
+                // navigate(`/cardsgallery`); is over riding firebase to tell you password is incorrect and or anything of that nature
   }
 
   function handlePasswordReset() {
@@ -111,5 +110,4 @@ export function LoginPage() {
       </>
     )
   }
-  
   
