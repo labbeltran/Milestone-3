@@ -24,6 +24,7 @@ export function SearchBar(props: { handleSearch: (arg0: React.FormEvent<HTMLForm
     
         return (
                 <form className="search-bar" onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+                  <div className="search-input-wrapper">
                     <input 
                     type="text" 
                     placeholder="Who's that Pokemon?"
@@ -35,6 +36,7 @@ export function SearchBar(props: { handleSearch: (arg0: React.FormEvent<HTMLForm
                     value="Search"
                     className="search-button"
                     />
+                  </div>
                 </form>
         )
     }
