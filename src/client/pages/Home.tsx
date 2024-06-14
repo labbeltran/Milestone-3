@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import React from 'react';
 import PokemonLogo from '../assets/Pokemon.svg';
-import './Home.css'
+import './Home.css';
 
 export function Home() {
   const dispatch = useDispatch();

@@ -40,15 +40,15 @@ export function Cards({ id, name, set, rarity, flavorText, images, cardmarket }:
         
         variant="top"
         src={images.small}
-        height="200px"
+        height="450px"
         style={{ objectFit: "cover" }}
       />
-      <Card.Body className="d-flex flex-column">
+      <Card.Body className="d-flex flex-column shadow-sm bg-light">
         <Card.Title className="d-flex justify-content-between align-items-baseline">
-          <span className="fs-2">{name}</span>
-          <span className="fs-2">{set.name}</span>
-          <span className="fs-2">{rarity}</span>
-          <span className="fs-2">{flavorText}</span>
+          <span className="fs-4">{name}</span>
+          {/* <span style={{fontSize: "0.6em"}}>{set.name}</span> */}
+          {/* <span className="fs-6">{rarity}</span>
+          <span className="fs-6">{flavorText}</span> */}
           <span className="ms-2 text-muted">{formatCurrency(cardmarket.prices.averageSellPrice)}</span>
         </Card.Title>
         <div className="mt-auto">
