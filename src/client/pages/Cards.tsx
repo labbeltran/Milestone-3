@@ -5,7 +5,7 @@ import { formatCurrency } from "../utilities/formatCurrency"
 
 type CardItemProps = {
  
-    id: number
+    id: string
     name: string
     set: {
       id: string, 
