@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
 import {setUser} from './store/usersSlice.ts';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
   const dispatch = useDispatch();

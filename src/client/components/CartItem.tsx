@@ -5,12 +5,12 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import React, { useEffect, useState } from "react";
 
   type CartItemProps = {
-    id: number
+    id: string
     quantity: number
   };
 
   type ItemType = {
-    id: number
+    id: string
     name: string
     set: {
       id: string, 

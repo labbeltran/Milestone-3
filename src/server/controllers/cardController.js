@@ -89,7 +89,8 @@ export const fetchPokemonCardByName = async (req, res) => {
             'X-Api-Key': API_KEY,
         },
         params: {
-          name: cardName,
+          q: `name:${cardName}`,
+          pageSize: 1,
         },
     });
 
