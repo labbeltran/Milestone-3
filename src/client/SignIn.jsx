@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import {useDispatch} from 'react-redux';
 import {setUser} from './store/usersSlice.ts';
+import './SignIn.css';
 // import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
@@ -62,51 +63,62 @@ export function LoginPage() {
 
         {/* { isLoading && <FullPageLoader></FullPageLoader> } */}
 
-        
-        <div className="">
-          <section>
-            <h1>Welcome to the LAMM Pokemon Card Store</h1>
-            <p>Login or create an account to continue</p>
-            <div className="">
-              <button 
-                className={`btn ${loginType == 'login' ? 'selected' : ''}`}
-                onClick={()=>setLoginType('login')}>
-                  Login
-              </button>
-              <button 
-                className={`btn ${loginType == 'signup' ? 'selected' : ''}`}
-                onClick={()=>setLoginType('signup')}>
-                  Signup
-              </button>
-            </div>
-            <form className="add-form login">
-                  <div className="">
-                      <label>Email *</label>
-                      <input onChange={(e)=>{handleCredentials(e)}} type="text" name="email" placeholder="Enter your email" />
-                  </div>
-                  <div className="">
-                      <label>Password *</label>
-                      <input onChange={(e)=>{handleCredentials(e)}} type="password" name="password" placeholder="Enter your password" />
-                  </div>
-                  {
-                    loginType == 'login' ?
-                    <button onClick={(e)=>{handleLogin(e)}}className="">Login</button>
-                    : 
-                    <button onClick={(e)=>{handleSignup(e)}} className="">Sign Up</button>
-                  }
-                
-                  {
-                    error &&
-                    <div>
-                        {error}
-                    </div>
-                  }
+        <div className="home-container">
+  <section className="header-section">
+    <h1>Welcome to the LAMM Pokemon Card Store</h1>
+    <p>Login or create an account to continue</p>
+  </section>
+  <section className="login-section">
+    <div className="button-group">
+      <button
+        className={`btn ${loginType == 'login' ? 'selected' : ''}`}
+        onClick={() => setLoginType('login')}
+      >
+        Login
+      </button>
+      <button
+        className={`btn ${loginType == 'signup' ? 'selected' : ''}`}
+        onClick={() => setLoginType('signup')}
+      >
+        Signup
+      </button>
+    </div>
+    <form className="add-form login">
+      <div className="input-group">
+        <label>Email *</label>
+        <input
+          onChange={(e) => handleCredentials(e)} type="text" name="email" placeholder="Enter your email"
+        />
+      </div>
+      <div className="input-group">
+        <label>Password *</label>
+        <input
+          onChange={(e) => handleCredentials(e)} type="password"name="password" placeholder="Enter your password"
+        />
+      </div>
+      {loginType == 'login' ? (
+        <button onClick={(e) => handleLogin(e)} className="submit-btn">
+          Login
+        </button>
+      ) : (
+        <button onClick={(e) => handleSignup(e)} className="submit-btn">
+          Sign Up
+        </button>
+      )}
+      {error && <div className="error-message">{error}</div>}
+      <button onClick={handlePasswordReset} className="forgot-password-btn">
+        Forgot Password?
+      </button>
+    </form>
+  </section>
+</div>
 
-                  <p onClick={handlePasswordReset} className="">Forgot Password?</p>
-                  
-              </form>
-          </section>
-        </div>
+      
+
+
+
+
+
       </>
     )
   }
