@@ -7,14 +7,14 @@
 }
 
 .home-header {
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin-bottom: 1rem;
-  color: #213547;
+  color: #000000;
 }
 
 .home-paragraph {
   font-size: 1.2em;
-  color: #646cff;
+  color: #ffffff;
 }
 
 .home-logo {
@@ -38,15 +38,5 @@
   }
   100% {
     transform: rotate(0deg);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .home-header {
-    color: #213547;
-  }
-
-  .home-paragraph {
-    color: #61dafb;
   }
 }
