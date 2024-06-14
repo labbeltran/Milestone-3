@@ -30,7 +30,7 @@ export function NavBar() {
         <Nav className=" me-auto">
           <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink}>Cards Gallery</Nav.Link>
-          <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link>
+          {/* <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link> */}
           <SearchBar handleSearch={function (arg0: React.FormEvent<HTMLFormElement>, arg1: string): void {
             throw new Error('Function not implemented.');
           } } />
