@@ -1,0 +1,50 @@
+.card-custom {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  height: 100%;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 0.4em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #666;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .card-custom {
+    height: auto;
+  }
+}

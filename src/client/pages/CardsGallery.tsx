@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row } from "react-bootstrap"
 import {Cards} from './Cards'
+import './CardsGallery.css';
 
 
 type CardItem = {
@@ -39,20 +40,39 @@ export function CardsGallery() {
       fetchCards()
     }, [])
 
-
-  return (
-    <>
-      <h1>Store</h1>
-      <Row md={2} xs={1} lg={3} className="g-3 fs-3">
-        {cards && cards.map(item => (
-          <Col key={item.name} className="fs-6">
-            <Cards  {...item} />
-          </Col>
-        ))}
-      </Row>
-    </>
-  )
-}
+      
+    return (
+      <>
+        <h1>Store</h1>
+        <Row md={2} xs={1} lg={3} className="g-3 fs-3">
+          {cards && cards.map(item => (
+            <Col key={item.name} className="fs-6">
+              <div className="card-custom">
+                <div className="card-content">
+                  <Cards  {...item} />
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </>
+    )
+  }
+    
+    
+//     return (
+//     <>
+//       <h1>Store</h1>
+//       <Row md={2} xs={1} lg={3} className="g-3 fs-3">
+//         {cards && cards.map(item => (
+//           <Col key={item.name} className="fs-6">
+//             <Cards  {...item} />
+//           </Col>
+//         ))}
+//       </Row>
+//     </>
+//   )
+// }
 
 
 
