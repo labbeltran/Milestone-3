@@ -28,7 +28,7 @@ export function NavBar() {
   return (
     <NavbarBs sticky="top" className="navbar">
       <Container fluid>
-        <Nav className=" me-auto">
+        <Nav className="me-auto navbar-nav">
           <Nav.Link to="/" as={NavLink} className="nav-link">Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink} className="nav-link">Cards Gallery</Nav.Link>
           {/* <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link> */}

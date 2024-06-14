@@ -2,6 +2,10 @@
   background-color: #d4a017;
 }
 
+.navbar-nav {
+  --bs-nav-link-padding-y: 0 !important;
+}
+
 .navbar .nav-link {
   color: white;
 }
