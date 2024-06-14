@@ -6,7 +6,7 @@ import './CardsGallery.css';
 
 type CardItem = {
  
-  id: number
+  id: string
   name: string
   set: {
     id: string, 

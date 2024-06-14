@@ -8,12 +8,12 @@ type ShoppingCartProviderProps = {
 };
 
 type CartItem = {
-  id: number;
+  id: string;
   quantity: number;
 };
 
 type ItemType = {
-  id: number;
+  id: string;
   name: string;
   set: {
     id: string;
@@ -96,9 +96,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
-  const addToCart = (item: CartItem) => {
-    setCartItems((prevItems) => [...prevItems, item]);
-  };
+  // const addToCart = (item: CartItem) => {
+  //   setCartItems((prevItems) => [...prevItems, item]);
+  // };
 
   function removeFromCart(id: number) {
     setCartItems(currItems => {
