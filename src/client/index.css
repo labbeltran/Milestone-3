@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
 #root {
  background-color: lightblue;
  height: 100%;
  
+}
+
+body, h1, p, input, button {
+  font-family: 'Protest Riot', sans-serif;
 }
