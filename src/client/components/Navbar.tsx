@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import {SearchBar} from '../components/SearchBar'
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { User } from 'firebase/auth';
+import './Navbar.css';
 
 
 export function NavBar() {
@@ -25,11 +26,11 @@ export function NavBar() {
 
 
   return (
-    <NavbarBs sticky="top" className="bg-white shadow-lg mb-3">
+    <NavbarBs sticky="top" className="navbar">
       <Container fluid>
         <Nav className=" me-auto">
-          <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
-          <Nav.Link to="/cardsgallery" as={NavLink}>Cards Gallery</Nav.Link>
+          <Nav.Link to="/" as={NavLink} className="nav-link">Home</Nav.Link>
+          <Nav.Link to="/cardsgallery" as={NavLink} className="nav-link">Cards Gallery</Nav.Link>
           {/* <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link> */}
           <SearchBar handleSearch={function (arg0: React.FormEvent<HTMLFormElement>, arg1: string): void {
             throw new Error('Function not implemented.');
@@ -37,9 +38,9 @@ export function NavBar() {
         </Nav>
         <Nav>
           {user ? (
-            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+            <Nav.Link as={NavLink} to="/" onClick={handleLogout} className="nav-link">Logout</Nav.Link>
           ) : (
-            <Nav.Link to="/SignIn" as={NavLink}>Login</Nav.Link>
+            <Nav.Link to="/SignIn" as={NavLink} className="nav-link">Login</Nav.Link>
           )}
         </Nav>
           <Button

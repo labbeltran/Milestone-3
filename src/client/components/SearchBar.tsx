@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import './SearchBar.css';
 
 
 type SearchTermProps = {
@@ -22,15 +23,17 @@ export function SearchBar(props: { handleSearch: (arg0: React.FormEvent<HTMLForm
         }
     
         return (
-                <form onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+                <form className="search-bar" onSubmit={(e) => props.handleSearch(e, searchTerm)}>
                     <input 
                     type="text" 
-                    placeholder="Who's that Pokemon?" 
+                    placeholder="Who's that Pokemon?"
+                    className="search-input" 
                     onChange={(e) => setSearchTerm(e.target.value)} 
                     />
                     <input 
                     type="submit" 
                     value="Search"
+                    className="search-button"
                     />
                 </form>
         )
