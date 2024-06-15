@@ -74,22 +74,3 @@ export function SearchResultsPage() {
     </>
   );
 }
-// }
-//   return (
-//     <div className="card-details">
-//       <div className="card-item">
-//         <h4>{card.name}</h4>
-//         <p>{card.flavorText}</p>
-//         <div className="card-images-container">
-//           <div className="card-portrait">
-//             <img src={card.images.large} alt={card.name} />
-//           </div>
-//           <div className="card-resume">
-//             <img src={card.rarity} alt={`${card.name} rarity`} />
-//           </div>
-//         </div>
-//         {/* Additional card details or components can be added here */}
-//       </div>
-//     </div>
-//   );
-// }
