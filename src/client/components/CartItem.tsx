@@ -1,7 +1,7 @@
 import { Button, Stack } from "react-bootstrap";
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { formatCurrency } from "../utilities/formatCurrency";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
   type CartItemProps = {
     id: string
@@ -9,8 +9,8 @@ import React, { useEffect, useState } from "react";
   };
 
   type ItemType = {
-    id: number
-    name: string
+    id: string
+    name: string  
     set: {
       id: string, 
       name: string
