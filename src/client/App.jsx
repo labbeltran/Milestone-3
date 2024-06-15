@@ -23,7 +23,7 @@ export function App() {
       <Route path="/cards" element={<Cards/>}></Route>
       <Route path="/cart" element={<ShoppingCart/>}></Route>
       <Route path="/SignIn" element={<LoginPage/>}></Route> 
-      <Route path="/search/:searchTerm" element={<SearchResultsPage/>}></Route>
+      <Route path="/search-results/:searchTerm" element={<SearchResultsPage />} />
     </Routes>
 
    </Container>

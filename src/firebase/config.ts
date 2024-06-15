@@ -1,5 +1,6 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,3 +22,4 @@ if (!getApps().length) {
 
 export const auth = getAuth(app);
 export type { User } from 'firebase/auth';
+export const firestore = getFirestore(app);

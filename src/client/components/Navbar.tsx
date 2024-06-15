@@ -1,5 +1,5 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/config';
 import React, { useEffect, useState } from 'react';
 import {SearchBar} from '../components/SearchBar'
@@ -11,6 +11,7 @@ import './Navbar.css';
 export function NavBar() {
   const { openCart, cartQuantity } = useShoppingCart();
   const [user, setUser] = useState<User | null>(null)
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -24,6 +25,10 @@ export function NavBar() {
     await auth.signOut();
   };
 
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>, searchTerm: string) => {
+    e.preventDefault();
+    navigate(`/search-results/${searchTerm}`);
+  };
 
   return (
     <NavbarBs sticky="top" className="navbar">
@@ -32,9 +37,7 @@ export function NavBar() {
           <Nav.Link to="/" as={NavLink} className="nav-link">Home</Nav.Link>
           <Nav.Link to="/cardsgallery" as={NavLink} className="nav-link">Cards Gallery</Nav.Link>
           {/* <Nav.Link to="/cards" as={NavLink}>Cards</Nav.Link> */}
-          <SearchBar handleSearch={function (arg0: React.FormEvent<HTMLFormElement>, arg1: string): void {
-            throw new Error('Function not implemented.');
-          } } />
+          <SearchBar handleSearch={handleSearch}/>
         </Nav>
         <Nav>
           {user ? (

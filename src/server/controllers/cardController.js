@@ -22,36 +22,24 @@ export const fetchPokemonCards = async (req, res) => {
       timeout: 5000,
     });
 
-    const cards = response.data.data; // The API response structure may vary
+    const data = response.data.data
 
-    const cardDetails = await Promise.all(cards.map(async (card) => {
-        try {
-            const cardResponse = await axios.get(`${apiUrl}/${card.id}`, {
-                headers: {
-                    'X-Api-Key': API_KEY,
-                },
-                timeout: 5000,
-            });
-            const data = cardResponse.data.data; // Adjust according to actual API response structure
-        
-            // Validate the response data against the schema
-            const pokeCardValue = await pokeCard.validate(data, {stripUnknown: true});
-        
-            return pokeCardValue;
-          } catch (error) {
-            if (error instanceof yup.ValidationError) {
-              console.error('Validation error:', error.errors);
-            } else {
-              console.error('API error:', error.message);
-          }
-          return null;
-        }
-      }));
-      const validCards = cardDetails.filter(card => card !== null);
+    // Validate each card object against the defined schema using Yup
+    const validatedCards = await Promise.all(data.map(async (card) => {
+      try {
+        await pokeCard.validate(card, { stripUnknown: true });
+        return card; // Return the validated card object
+      } catch (error) {
+        console.error('Validation error for card:', error.errors);
+        return null; // Return null for invalid cards
+      }
+    }));
+      const validCards = validatedCards.filter(card => card !== null);
 
       res.json(validCards)
   } catch (error) {
     console.error('Error fetching data from Pokémon TCG API:', error);
+    res.status(500).json({ error: 'Failed to fetch or validate data from Pokémon TCG API' });
   }
 };
 
@@ -113,6 +101,3 @@ export const fetchPokemonCardByName = async (req, res) => {
     }
   } 
 };
-
-// fetchPokemonCardById('xy7-54');
-// fetchPokemonCards();
