@@ -1,31 +1,9 @@
-import React from 'react';
 import { Button, Card } from "react-bootstrap"
 import { useShoppingCart } from '../context/shoppingCartContext'
 import { formatCurrency } from "../utilities/formatCurrency"
+import { CardItem } from '../utilities/cardItem'
 
-type CardItemProps = {
- 
-    id: string
-    name: string
-    set: {
-      id: string, 
-      name: string
-    }
-    rarity: string
-    flavorText: string
-    images: {
-      small: string 
-      large: string
-    }
-    cardmarket: {
-      prices: {
-        averageSellPrice: number
-      }
-    }
-  }
-
-
-export function Cards({ id, name, set, rarity, flavorText, images, cardmarket }: CardItemProps) {
+export function Cards({ id, name, images, cardmarket }: CardItem) {
   const {
     getItemQuantity,
     increaseCartQuantity,

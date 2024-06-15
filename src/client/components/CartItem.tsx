@@ -1,36 +1,13 @@
 import { Button, Stack } from "react-bootstrap";
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { formatCurrency } from "../utilities/formatCurrency";
-import React, { useEffect, useState } from "react";
-
-  type CartItemProps = {
-    id: string
-    quantity: number
-  };
-
-  type ItemType = {
-    id: number
-    name: string
-    set: {
-      id: string, 
-      name: string
-    }
-    rarity: string
-    flavorText: string
-    images: {
-      small: string 
-      large: string
-    }
-    cardmarket: {
-      prices: {
-        averageSellPrice: number
-      }
-    }
-  }
+import { useEffect, useState } from "react";
+import { CardItem } from "../utilities/cardItem";
+import { CartItemProps } from "../utilities/cartItem";
 
   export function CartItem({ id, quantity }: CartItemProps) {
     const { removeFromCart } = useShoppingCart();
-    const [item, setItem] = useState<ItemType | null>(null);
+    const [item, setItem] = useState<CardItem | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   

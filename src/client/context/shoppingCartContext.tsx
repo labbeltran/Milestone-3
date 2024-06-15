@@ -1,35 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { ShoppingCart } from '../pages/ShoppingCart';
 import { useLocalStorage } from '../hook/useLocalStorage';
-import React from 'react';
+import { CartItemProps } from "../utilities/cartItem";
 
 type ShoppingCartProviderProps = {
   children: ReactNode;
-};
-
-type CartItem = {
-  id: string;
-  quantity: number;
-};
-
-type ItemType = {
-  id: string;
-  name: string;
-  set: {
-    id: string;
-    name: string;
-  };
-  rarity: string;
-  flavorText: string;
-  images: {
-    small: string;
-    large: string;
-  };
-  cardmarket: {
-    prices: {
-      averageSellPrice: number;
-    };
-  };
 };
 
 type ShoppingCartContext = {
@@ -40,8 +15,7 @@ type ShoppingCartContext = {
   decreaseCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
   cartQuantity: number;
-  cartItems: CartItem[];
-  storeItems: ItemType[];
+  cartItems: CartItemProps[];
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -52,8 +26,7 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
-  const [storeItems, setStoreItems] = useState<ItemType[]>([]); // Add storeItems state
+  const [cartItems, setCartItems] = useLocalStorage<CartItemProps[]>("shopping-cart", []);
 
   const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
 
@@ -96,10 +69,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
-  // const addToCart = (item: CartItem) => {
-  //   setCartItems((prevItems) => [...prevItems, item]);
-  // };
-
   function removeFromCart(id: string) {
     setCartItems(currItems => {
       return currItems.filter(item => item.id !== id);
@@ -117,7 +86,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         closeCart,
         cartItems,
         cartQuantity,
-        storeItems, 
       }}
     >
       {children}

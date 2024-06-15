@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Offcanvas, Stack } from "react-bootstrap";
 import { useShoppingCart } from '../context/shoppingCartContext';
 import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "../components/CartItem"
 import { useLocalStorage } from '../hook/useLocalStorage';
-
-type CartItemProps = {
-  id: string
-  quantity: number
-};
+import { CartItemProps } from "../utilities/cartItem";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -25,6 +21,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart();
   const [storeItems, setStoreItems] = useState<StoreItem[]>([]);
   const [cItems, setCartItems] = useLocalStorage<CartItemProps[]>("shopping-cart", []);
+  console.log(cItems)
 
   useEffect(() => {
     const fetchItems = async () => {

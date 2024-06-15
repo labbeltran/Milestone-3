@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Col, Row } from "react-bootstrap"
 import {Cards} from './Cards'
+import { CardItem } from '../utilities/cardItem';
 import './CardsGallery.css';
-
-
-type CardItem = {
-  id: string
-  name: string
-  set: {
-    id: string, 
-    name: string
-  }
-  rarity: string
-  flavorText: string
-  images: {
-    small: string 
-    large: string
-  }
-  cardmarket: {
-    prices: {
-      averageSellPrice: number
-    }
-  }
-}
-
-
 
 export function CardsGallery() {
     const [cards, setCards] = useState<CardItem[] | null>(null);

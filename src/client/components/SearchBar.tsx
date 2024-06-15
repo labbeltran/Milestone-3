@@ -8,20 +8,13 @@ type SearchBarProps = {
 };
 
 export function SearchBar({ handleSearch }: SearchBarProps) {
-        let [searchTerm, setSearchTerm] = useState('')
+        const [searchTerm, setSearchTerm] = useState('')
         const navigate = useNavigate();
 
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
     
           try {
-            const response = await fetch(`api/cards/name/${encodeURIComponent(searchTerm)}`);
-            if (!response.ok) {
-              throw new Error('Failed to fetch card data');
-            }
-            const json = await response.json();
-            console.log(json)
-            
             // Navigate to search results page
             navigate(`/search-results/${encodeURIComponent(searchTerm)}`);
             // Call parent component's handleSearch function if needed
