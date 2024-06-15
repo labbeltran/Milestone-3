@@ -15,7 +15,7 @@ export function SearchBar({ handleSearch }: SearchBarProps) {
           e.preventDefault();
     
           try {
-            const response = await fetch(`api/cards/name/${searchTerm}`);
+            const response = await fetch(`api/cards/name/${encodeURIComponent(searchTerm)}`);
             if (!response.ok) {
               throw new Error('Failed to fetch card data');
             }
@@ -23,7 +23,7 @@ export function SearchBar({ handleSearch }: SearchBarProps) {
             console.log(json)
             
             // Navigate to search results page
-            navigate(`/search-results/${searchTerm}`);
+            navigate(`/search-results/${encodeURIComponent(searchTerm)}`);
             // Call parent component's handleSearch function if needed
             handleSearch(e, searchTerm);
           } catch (error) {
@@ -34,7 +34,6 @@ export function SearchBar({ handleSearch }: SearchBarProps) {
         
           
         return (
-          <>
             <form className="search-bar" onSubmit={handleSubmit}>
                         <div className="search-input-wrapper">
                           <input 
@@ -50,7 +49,6 @@ export function SearchBar({ handleSearch }: SearchBarProps) {
                           />
                         </div>
                       </form>
-          </>
         )
       }
 

@@ -29,13 +29,6 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        // const item: StoreItem = 
-        // {"id":"mcd19-1",
-        //   "name": "Caterpie",
-        //   "price": 2.03
-        // }
-        // const items: StoreItem[] = [item]
-        // setStoreItems(items)
         console.log(cItems.length)
         const sItems: StoreItem[] = []
         for (let i = 0; i < cItems.length; i++){
@@ -55,7 +48,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       }
     };
     fetchItems();
-  }, []);
+  }, [cItems]);
 
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
@@ -64,15 +57,15 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Stack gap={3}>
-          {cartItems.map(item => (
-            <CartItem key={item.id} {...item} />
+          {cartItems.map((item) => (
+            <CartItem key={item.id} id={item.id} quantity={item.quantity} />
           ))}
           <div className="ms-auto fw-bold fs-5">
             Total{" "}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
                 const item = storeItems.find((i) => i.id === cartItem.id);
-                return total + (item? item.price * cartItem.quantity: 0);
+                return total + (item ? item.price * cartItem.quantity: 0);
               }, 0)
             )}
           </div>

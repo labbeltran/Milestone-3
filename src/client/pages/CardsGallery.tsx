@@ -5,7 +5,6 @@ import './CardsGallery.css';
 
 
 type CardItem = {
- 
   id: string
   name: string
   set: {
@@ -24,6 +23,8 @@ type CardItem = {
     }
   }
 }
+
+
 
 export function CardsGallery() {
     const [cards, setCards] = useState<CardItem[] | null>(null);
@@ -46,7 +47,7 @@ export function CardsGallery() {
         <h1>Store</h1>
         <Row md={2} xs={1} lg={3} className="g-3 fs-3">
           {cards && cards.map(item => (
-            <Col key={item.name} className="fs-6">
+            <Col key={item.id} className="fs-6">
               <div className="card-custom">
                 <div className="card-content">
                   <Cards  {...item} />
