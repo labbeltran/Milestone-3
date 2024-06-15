@@ -21,17 +21,6 @@ export function App() {
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/cardsgallery" element={<CardsGallery/>}></Route>
-      <Route path="/cards" element={<Cards id={''} name={''} set={{
-            id: '',
-            name: ''
-          }} rarity={''} flavorText={''} images={{
-            small: '',
-            large: ''
-          }} cardmarket={{
-            prices: {
-              averageSellPrice: 0
-            }
-          }}/>}></Route>
       <Route path="/cart" element={<ShoppingCart isOpen={false}/>}></Route>
       <Route path="/SignIn" element={<LoginPage/>}></Route> 
       <Route path="/search-results/:searchTerm" element={<SearchResultsPage />} />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Col, Row } from "react-bootstrap";
 import { Cards } from './Cards';
+import './SearchResultsPage.css'
 
 type CardItem = {
   id: string;
@@ -66,6 +67,13 @@ export function SearchResultsPage() {
             <div className="card-custom">
               <div className="card-content">
                 <Cards {...item} />
+              </div>
+              <div className="extra-text">
+                {item.name}
+                {item.set.id}
+                {item.set.name}
+                {item.flavorText}
+                {item.rarity}
               </div>
             </div>
           </Col>

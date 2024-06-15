@@ -27,7 +27,7 @@ export function NavBar() {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>, searchTerm: string) => {
     e.preventDefault();
-    navigate(`/search-results/${searchTerm}`);
+    navigate(`/search-results/${encodeURIComponent(searchTerm)}`);
   };
 
   return (
