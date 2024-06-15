@@ -78,7 +78,7 @@ export const fetchPokemonCardByName = async (req, res) => {
         },
         params: {
           q: `name:${cardName}`,
-          pageSize: 1,
+          pageSize: 5,
         },
     });
 

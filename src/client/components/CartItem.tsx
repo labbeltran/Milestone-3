@@ -1,6 +1,5 @@
 import { Button, Stack } from "react-bootstrap";
 import { useShoppingCart } from '../context/shoppingCartContext';
-import {Cards} from '../pages/Cards';
 import { formatCurrency } from "../utilities/formatCurrency";
 import React, { useEffect, useState } from "react";
 
@@ -10,7 +9,7 @@ import React, { useEffect, useState } from "react";
   };
 
   type ItemType = {
-    id: string
+    id: number
     name: string
     set: {
       id: string, 
