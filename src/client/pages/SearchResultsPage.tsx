@@ -64,16 +64,16 @@ export function SearchResultsPage() {
       <Row md={2} xs={1} lg={3} className="g-3 fs-3">
         {cards.map(item => (
           <Col key={item.id} className="fs-6">
-            <div className="card-custom">
+            <div className="card-container">
               <div className="card-content">
                 <Cards {...item} />
               </div>
               <div className="extra-text">
-                {item.name}
-                {item.set.id}
-                {item.set.name}
-                {item.flavorText}
-                {item.rarity}
+                <p><strong>Name:</strong> {item.name}</p>
+                <p><strong>Set ID:</strong> {item.set.id}</p>
+                <p><strong>Set Name:</strong> {item.set.name}</p>
+                <p><strong>Flavor Text:</strong> {item.flavorText}</p>
+                <p><strong>Rarity:</strong> {item.rarity}</p>
               </div>
             </div>
           </Col>
