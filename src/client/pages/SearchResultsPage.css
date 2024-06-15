@@ -1,3 +1,27 @@
-.extra-text{
-    background-color: blue;
-}
+.card-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1em;
+  }
+  
+.card-content {
+    flex: 0 0 auto;
+    margin-right: 2em;
+  }
+  
+ .extra-text{
+    background-color: #299cd2;
+    color: white;
+    overflow: visible;
+    width: auto;
+    padding: 10px;
+    margin-top: 100px;
+  }
+
+.extra-text p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    white-space: nowrap;
+    margin: 10px 0;
+  } 
