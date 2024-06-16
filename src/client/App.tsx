@@ -2,14 +2,11 @@ import {Routes, Route} from 'react-router-dom';
 import {Container} from 'react-bootstrap';
 import{Home} from './pages/Home.js';
 import{CardsGallery} from './pages/CardsGallery.js';
-import{Cards} from './pages/Cards.js';
 import{ShoppingCart} from './pages/ShoppingCart.js';
 import {NavBar} from './components/Navbar.js';
 import {LoginPage} from './SignIn.jsx';
 import {SearchResultsPage} from './pages/SearchResultsPage.js';
-import React from 'react';
-// import { selectUsers } from './store/usersSlice'
-//import {useSelector} from 'react-redux'
+
 
 export function App() {
 
