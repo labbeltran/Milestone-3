@@ -55,7 +55,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       <Offcanvas.Body>
         <Stack gap={3}>
           {cartItems.map((item) => (
-            <CartItem key={item.id} id={item.id} quantity={item.quantity} />
+            <CartItem key={item.id} id={item.id} quantity={item.quantity} price={item.price}/>
           ))}
           <div className="ms-auto fw-bold fs-5">
             Total{" "}
