@@ -1,6 +1,6 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase/config';
+import { auth } from '../../server/firebase/config';
 import React, { useEffect, useState } from 'react';
 import {SearchBar} from '../components/SearchBar'
 import { useShoppingCart } from '../context/shoppingCartContext';
