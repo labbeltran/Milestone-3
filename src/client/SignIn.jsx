@@ -10,14 +10,14 @@ import {
 import {useDispatch} from 'react-redux';
 import {setUser} from './store/usersSlice.ts';
 import './SignIn.css';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
   const dispatch = useDispatch();
   const [loginType, setLoginType] = useState('login');
   const [userCredentials, setUserCredentials] = useState({});
   const [error, setError] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -35,6 +35,9 @@ export function LoginPage() {
             e.preventDefault();
             setError("");
             createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+            .then (() => {
+              navigate(`/cardsgallery`); 
+            })
             .catch((error) => {
               setError(error.message);
               });
@@ -45,10 +48,13 @@ export function LoginPage() {
                 setError("");
                 
                 signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+                .then (() => {
+                  navigate(`/cardsgallery`); 
+                })
                 .catch((error) => {
                   setError(error.message);
+                  return
                 });
-                // navigate(`/cardsgallery`); is over riding firebase to tell you password is incorrect and or anything of that nature
   }
 
   function handlePasswordReset() {
