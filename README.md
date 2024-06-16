@@ -78,6 +78,7 @@ Moe: Firebase integration, Home Page Design, UI/UX, CSS & Styling
 - VSC's genie also assisted with debugging 
 - Various YouTube videos on Firebase, shopping carts, deployment
 - you can make your own login but if you dont want to user1@user1.com PW 1234567
+- https://lamm-pokeshop.onrender.com/
 
 ### Additional notes and observations about the project.
 - YouTube videos were helpful for providing an understanding of the concept, however, most videos contained setup for front-end only and contained logic that only worked in the local cache, as such the code had to be repurposed to allow for storing and fetching of data from our database. 
