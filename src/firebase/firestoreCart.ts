@@ -1,6 +1,5 @@
-import { doc, writeBatch, getDoc } from "firebase/firestore";
+import { doc, writeBatch} from "firebase/firestore";
 import { auth, firestore } from './config';
-
 
 type CartItem = {
     id: string;
