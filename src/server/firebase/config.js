@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
-  authDomain: "milestone-3-49e1b.firebaseapp.com",
-  projectId: "milestone-3-49e1b",
-  storageBucket: "milestone-3-49e1b.appspot.com",
-  messagingSenderId: "397752647742",
-  appId: "1:397752647742:web:1e2aa08c161f21aa45116f"
+  apiKey: process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID
 };
 
 // Check if a Firebase app is already initialized
@@ -21,5 +21,4 @@ if (!getApps().length) {
 }
 
 export const auth = getAuth(app);
-export type { User } from 'firebase/auth';
 export const firestore = getFirestore(app);

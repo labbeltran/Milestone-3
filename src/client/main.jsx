@@ -9,6 +9,8 @@ import { Provider } from 'react-redux';
 import { ShoppingCartProvider } from './context/shoppingCartContext';
 import store from './store/store';
 import { SearchProvider } from './context/SearchContext';
+import '../server/firebase/config'; // Import the Firebase config file to initialize Firebase
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
