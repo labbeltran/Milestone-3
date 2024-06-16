@@ -2,7 +2,7 @@
 Created By:
 | MAX | MOE | LUIS | ANDRES |
 
-A group project using third party API to style an e-commerce website
+A group project using third party API to style an e-commerce website. Our end goal is to create an application that would hold users cards they bought in their profile through a mongo database and they would be able to trade with other users. We quickly realized we did not have enough time to achieve this and wanted to focus on the store front and have something we could actually deploy.
  
 ## Tech Usage
 
@@ -30,7 +30,7 @@ A group project using third party API to style an e-commerce website
 
 Andres - Third party API routing
 
-Max -
+Max - Firebase integration, some CSS, some route configuration
 
 Luis - 
 
