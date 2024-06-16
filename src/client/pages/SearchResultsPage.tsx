@@ -34,7 +34,7 @@ export function SearchResultsPage() {
     const fetchItems = async () => {
       try {
         if (!searchTerm) {
-          throw new Error('Search term is not defined');
+          throw new Error('Pokedex Data Unavailable');
         }
 
         const response = await fetch(`/api/cards/name/${encodeURIComponent(searchTerm)}`);
@@ -44,8 +44,8 @@ export function SearchResultsPage() {
         const json = await response.json();
         setCards([json]); // Assuming json is directly the CardItem type
       } catch (error) {
-        console.error("Error fetching items:", error);
-        setError('Failed to fetch items. Please try again later.');
+        console.error("Pokedex Data Unavailable:", error);
+        setError('Pokedex Data Unavailable');
       } finally {
         setLoading(false);
       }
