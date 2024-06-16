@@ -1,6 +1,6 @@
 // import FullPageLoader from './components/FullPageLoader.tsx';
 import {useState} from 'react';
-import {auth} from '../server/firebase/config.js';
+import {auth} from '../server/firebase/config';
 import { 
   createUserWithEmailAndPassword, 
   sendPasswordResetEmail, 
